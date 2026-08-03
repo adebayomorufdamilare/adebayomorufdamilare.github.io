@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Video Tool Matcher — Find the Right AI Video Tool for Your Shot</title>
+<meta name="description" content="Describe what you're making and get matched to the right AI video generator — Higgsfield, Luma, Kling, Seedance, Flow AI, or Happy Horse — plus a starter prompt. Built by Moruf, AI video producer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0b0f;
+    --bg-panel:#12141b;
+    --bg-panel-2:#181b24;
+    --border:#242833;
+    --text:#eef0f4;
+    --text-dim:#9aa1b0;
+    --text-faint:#5f6575;
+    --accent:#7dd3c0;
+    --accent-2:#8b9dfc;
+    --max:900px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-0.02em;}
+  a{color:var(--accent);}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+
+  header{padding:32px 0 8px;text-align:center;}
+  .eyebrow{font-size:12px;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;font-weight:600;margin-bottom:14px;}
+  h1{font-size:clamp(28px,5vw,42px);line-height:1.1;margin-bottom:14px;}
+  header p{color:var(--text-dim);font-size:15px;max-width:560px;margin:0 auto;}
+  .byline{margin-top:18px;font-size:13px;color:var(--text-faint);}
+  .byline a{color:var(--text-dim);}
+
+  main{padding:40px 0 80px;}
+
+  .card{background:var(--bg-panel);border:1px solid var(--border);border-radius:18px;padding:32px;margin-bottom:24px;}
+  .step-label{font-size:12px;letter-spacing:0.1em;color:var(--accent);text-transform:uppercase;font-weight:600;margin-bottom:16px;}
+  .step-title{font-size:20px;margin-bottom:18px;}
+
+  .option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:640px){.option-grid{grid-template-columns:1fr 1fr;}}
+  .opt{
+    background:var(--bg-panel-2);border:1px solid var(--border);border-radius:12px;
+    padding:16px 14px;cursor:pointer;text-align:center;font-size:13px;color:var(--text-dim);
+    transition:all .15s;
+  }
+  .opt:hover{border-color:var(--text-dim);}
+  .opt.selected{border-color:var(--accent);color:var(--text);background:rgba(125,211,192,0.08);}
+  .opt .ico{font-size:22px;display:block;margin-bottom:8px;}
+
+  #result{display:none;}
+  .result-header{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+  .badge{background:var(--accent);color:#08110e;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 12px;border-radius:100px;}
+  .tool-name{font-size:26px;}
+  .tool-why{color:var(--text-dim);font-size:14px;margin:14px 0 20px;}
+  .tool-facts{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;}
+  .tool-facts span{font-size:12px;color:var(--text-dim);border:1px solid var(--border);padding:5px 12px;border-radius:100px;}
+
+  .alt-box{background:var(--bg-panel-2);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:20px;}
+  .alt-box .lbl{font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;}
+  .alt-box b{font-size:15px;}
+  .alt-box p{color:var(--text-dim);font-size:13px;margin-top:4px;}
+
+  .prompt-box{background:#08090c;border:1px solid var(--border);border-radius:12px;padding:20px;position:relative;}
+  .prompt-box .lbl{font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
+  .prompt-box textarea{
+    width:100%;background:transparent;border:none;color:var(--text);font-family:'Inter',monospace;
+    font-size:13px;line-height:1.7;resize:vertical;min-height:140px;
+  }
+  .prompt-box textarea:focus{outline:none;}
+  .copy-btn{
+    position:absolute;top:16px;right:16px;background:var(--accent);color:#08110e;border:none;
+    font-size:12px;font-weight:600;padding:7px 14px;border-radius:100px;cursor:pointer;
+  }
+  .copy-btn:hover{background:#95ddcd;}
+
+  .reset-btn{margin-top:20px;font-size:13px;color:var(--text-faint);cursor:pointer;text-decoration:underline;}
+
+  footer{padding:32px 0;text-align:center;color:var(--text-faint);font-size:12px;border-top:1px solid var(--border);}
+  footer a{color:var(--text-dim);}
+
+  .note{font-size:12px;color:var(--text-faint);margin-top:8px;font-style:italic;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">AI Video Tool Matcher</div>
+    <h1>Which AI Video Tool Should You Actually Use?</h1>
+    <p>The AI video landscape changes monthly. Tell me what you're making and I'll match you to the right tool — plus a starter prompt to go with it.</p>
+    <div class="byline">Built by <a href="https://adebayomorufdamilare.github.io" target="_blank">Moruf</a> — AI video producer working across Higgsfield, Luma, Kling, Seedance, Flow AI &amp; Happy Horse daily.</div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="card">
+      <div class="step-label">Step 1</div>
+      <div class="step-title">What are you making?</div>
+      <div class="option-grid" id="useCaseGrid">
+        <div class="opt" data-value="product">
+          <span class="ico">📦</span>Product Ad / Commercial
+        </div>
+        <div class="opt" data-value="cinematic">
+          <span class="ico">🎬</span>Cinematic Brand Film
+        </div>
+        <div class="opt" data-value="avatar">
+          <span class="ico">🗣️</span>Talking-Head / AI Avatar
+        </div>
+        <div class="opt" data-value="ugc">
+          <span class="ico">⚡</span>Fast UGC / Social Clip
+        </div>
+        <div class="opt" data-value="multilingual">
+          <span class="ico">🌍</span>Multilingual / Dubbed Content
+        </div>
+        <div class="opt" data-value="longform">
+          <span class="ico">🎞️</span>Long-Form / Multi-Scene Story
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="step-label">Step 2</div>
+      <div class="step-title">What matters most to you?</div>
+      <div class="option-grid" id="priorityGrid">
+        <div class="opt" data-value="quality">
+          <span class="ico">✨</span>Visual Quality
+        </div>
+        <div class="opt" data-value="speed">
+          <span class="ico">⏱️</span>Speed
+        </div>
+        <div class="opt" data-value="budget">
+          <span class="ico">💰</span>Budget / Free Options
+        </div>
+      </div>
+    </div>
+
+    <div id="result" class="card">
+      <div class="result-header">
+        <span class="badge">Recommended</span>
+      </div>
+      <div class="tool-name" id="toolName"></div>
+      <div class="tool-facts" id="toolFacts"></div>
+      <div class="tool-why" id="toolWhy"></div>
+
+      <div class="alt-box">
+        <div class="lbl">Also consider</div>
+        <b id="altName"></b>
+        <p id="altWhy"></p>
+      </div>
+
+      <div class="prompt-box">
+        <div class="lbl">Starter prompt — edit and paste into your tool</div>
+        <button class="copy-btn" onclick="copyPrompt()">Copy</button>
+        <textarea id="promptText" readonly></textarea>
+      </div>
+      <div class="note" id="toolNote"></div>
+
+      <div class="reset-btn" onclick="location.reload()">↺ Start over</div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Tool capabilities checked against public sources as of August 2026 — this space moves fast, so verify current pricing/features before committing.<br>
+    Built by <a href="https://adebayomorufdamilare.github.io" target="_blank">Adebayo Moruf Damilare</a> · <a href="mailto:adebayomorufdamilare@gmail.com">Get in touch</a>
+  </div>
+</footer>
+
+<script>
+const TOOLS = {
+  higgsfield: {
+    name: "Higgsfield AI",
+    facts: ["15+ models in one sub", "70+ cinematic presets", "Soul ID character consistency", "Platform-optimized exports"],
+    note: "Aggregates Sora 2, Veo 3.1, and Kling 3.0 under one subscription — good when you want to compare models without juggling five accounts."
+  },
+  luma: {
+    name: "Luma AI (Ray3)",
+    facts: ["Best-in-class motion physics", "Native 16-bit HDR", "Photorealistic 1080p in ~10s", "Strong on spatial/3D scenes"],
+    note: "Its edge is realistic camera movement and lighting — the strongest pick when the shot needs to look genuinely filmed, not generated."
+  },
+  kling: {
+    name: "Kling AI (3.0 Omni)",
+    facts: ["Native lip-sync, 5 languages", "Elements 3.0 character fidelity", "Native in-video text rendering", "Native 4K output"],
+    note: "The only one of these tools built specifically for dialogue and on-screen text — logos and captions render cleanly without post-production fixes."
+  },
+  seedance: {
+    name: "Seedance (ByteDance)",
+    facts: ["Multimodal input (text/image/video/audio)", "Omni Reference — 12 files for consistency", "Up to 4K, up to 30s clips (2.5)", "Synced audio-video generation"],
+    note: "Built for complex, reference-heavy narrative sequences — feed it multiple character/scene references and it holds consistency across shots."
+  },
+  flow: {
+    name: "Google Flow (Veo 3.1)",
+    facts: ["4K output", "Unified image-to-video workflow", "Nano Banana stills integration", "Natural-language prompting"],
+    note: "Best when you're moving between generated stills and video in the same session — image and video generation live in one workspace."
+  },
+  happyhorse: {
+    name: "Happy Horse",
+    facts: ["Open-source", "1080p video in ~38 seconds", "Native joint audio-video synthesis", "Multilingual lip-sync"],
+    note: "The fastest and most budget-friendly option here — open-source with no subscription required, built for quick turnaround dialogue clips."
+  }
+};
+
+const MATRIX = {
+  product:      { primary: "luma",       alt: "higgsfield" },
+  cinematic:    { primary: "higgsfield", alt: "luma" },
+  avatar:       { primary: "kling",      alt: "happyhorse" },
+  ugc:          { primary: "happyhorse", alt: "higgsfield" },
+  multilingual: { primary: "kling",      alt: "happyhorse" },
+  longform:     { primary: "seedance",   alt: "flow" }
+};
+
+// priority overrides — nudge the pick when speed/budget is the stated priority
+const PRIORITY_OVERRIDE = {
+  speed:  { product: "happyhorse", cinematic: "luma", avatar: "happyhorse", ugc: "happyhorse", multilingual: "happyhorse", longform: "seedance" },
+  budget: { product: "happyhorse", cinematic: "higgsfield", avatar: "happyhorse", ugc: "happyhorse", multilingual: "happyhorse", longform: "flow" }
+};
+
+const PROMPTS = {
+  product: (tool) => `[PRODUCT: describe your product here]\n\nOpening shot: slow push-in on the product, resting on [surface/setting], soft directional light from [left/right/above], shallow depth of field.\n\nMotion: camera orbits 20° around the product, revealing [key feature]. Natural reflections, no harsh shadows.\n\nClosing shot: product centered, light settles, brand logo/text fades in bottom third.\n\nStyle: photorealistic, commercial-grade lighting, 4K, 16:9.\n\n[Tool: ${tool}]`,
+  cinematic: (tool) => `[BRAND: name] — [ONE-LINE STORY BEAT, e.g. "a founder's first day"]\n\nScene 1 (0-3s): wide establishing shot, [location], golden hour light, slow dolly-in.\nScene 2 (3-6s): close-up on [subject/detail], emotional beat — [what they feel].\nScene 3 (6-10s): reveal shot — product/brand moment, confident camera settle.\n\nTone: cinematic, warm color grade, subtle film grain, no dialogue — driven by music and visuals.\n\n[Tool: ${tool}]`,
+  avatar: (tool) => `[CHARACTER: describe your avatar/spokesperson — age, look, outfit]\n\nSetting: [studio backdrop / office / outdoor], soft key light, camera at eye level, medium close-up.\n\nDialogue: "[insert script line 1]... [insert script line 2]..."\n\nDelivery: natural, conversational tone, subtle hand gestures, direct eye contact with camera.\n\nLip-sync: precise, [language].\n\n[Tool: ${tool}]`,
+  ugc: (tool) => `[CREATOR: casual, handheld selfie-style framing]\n\nHook (0-2s): direct-to-camera, "[attention-grabbing opening line]"\n\nBody (2-8s): quick cuts between [product/topic] and reaction shots, natural lighting, slightly imperfect framing (feels authentic, not produced).\n\nCTA (8-10s): "[call to action line]"\n\nStyle: vertical 9:16, natural color, no heavy grade — this should feel like a phone video, not an ad.\n\n[Tool: ${tool}]`,
+  multilingual: (tool) => `[SPEAKER: describe your character]\n\nScript (English): "[insert script]"\nTarget language(s): [list languages needed]\n\nDelivery: natural pacing, culturally appropriate tone for [target market], precise lip-sync per language track.\n\nSetting: [describe backdrop], consistent across all language versions.\n\n[Tool: ${tool}]`,
+  longform: (tool) => `[STORY: one-paragraph synopsis]\n\nScene 1: [setting, characters, action] — establish world.\nScene 2: [rising action/conflict] — reference character consistency from Scene 1.\nScene 3: [turning point].\nScene 4: [resolution] — callback visual to Scene 1.\n\nCharacter reference: [upload 2-3 reference images/clips for consistency across scenes].\nAudio: [music mood / voiceover / ambient sound direction].\n\n[Tool: ${tool}]`
+};
+
+let selectedUseCase = null;
+let selectedPriority = null;
+
+document.querySelectorAll('#useCaseGrid .opt').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('#useCaseGrid .opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedUseCase = el.dataset.value;
+    maybeShowResult();
+  });
+});
+
+document.querySelectorAll('#priorityGrid .opt').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('#priorityGrid .opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedPriority = el.dataset.value;
+    maybeShowResult();
+  });
+});
+
+function maybeShowResult(){
+  if(!selectedUseCase || !selectedPriority) return;
+
+  let primaryKey = MATRIX[selectedUseCase].primary;
+  let altKey = MATRIX[selectedUseCase].alt;
+
+  if(selectedPriority !== 'quality' && PRIORITY_OVERRIDE[selectedPriority] && PRIORITY_OVERRIDE[selectedPriority][selectedUseCase]){
+    const override = PRIORITY_OVERRIDE[selectedPriority][selectedUseCase];
+    if(override !== primaryKey){
+      altKey = primaryKey;
+      primaryKey = override;
+    }
+  }
+
+  const primary = TOOLS[primaryKey];
+  const alt = TOOLS[altKey];
+
+  document.getElementById('toolName').textContent = primary.name;
+  document.getElementById('toolFacts').innerHTML = primary.facts.map(f => `<span>${f}</span>`).join('');
+  document.getElementById('toolWhy').textContent = primary.note;
+
+  document.getElementById('altName').textContent = alt.name;
+  document.getElementById('altWhy').textContent = alt.note;
+
+  document.getElementById('promptText').value = PROMPTS[selectedUseCase](primary.name);
+  document.getElementById('toolNote').textContent = "Prompt syntax varies by tool — treat this as a structural starting point, not exact copy-paste syntax for every platform.";
+
+  const result = document.getElementById('result');
+  result.style.display = 'block';
+  result.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function copyPrompt(){
+  const ta = document.getElementById('promptText');
+  ta.select();
+  document.execCommand('copy');
+  const btn = document.querySelector('.copy-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Copied!';
+  setTimeout(() => btn.textContent = original, 1500);
+}
+</script>
+
+</body>
+</html>
