@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adebayo Moruf Damilare — Digital Operations & AI Systems</title>
+<meta name="description" content="Digital Operations Strategist, Remote Project Manager, and Founder of NexRoute Express Ltd. 7+ years running operations and building AI-assisted content workflows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0b0f;
+    --bg-panel:#12141b;
+    --bg-panel-2:#181b24;
+    --border:#242833;
+    --text:#eef0f4;
+    --text-dim:#9aa1b0;
+    --text-faint:#5f6575;
+    --accent:#7dd3c0;
+    --accent-2:#8b9dfc;
+    --max:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4,.display{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-0.02em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  section{padding:120px 0;position:relative;}
+  @media(max-width:768px){section{padding:72px 0;} .wrap{padding:0 20px;}}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(10,11,15,0.85);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{max-width:var(--max);margin:0 auto;padding:18px 32px;display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.02em;}
+  .logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:32px;font-size:14px;color:var(--text-dim);}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{background:var(--accent);color:#08110e;padding:9px 18px;border-radius:100px;font-size:13px;font-weight:600;}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer;}
+  @media(max-width:860px){
+    .nav-links{position:fixed;top:60px;left:0;right:0;background:var(--bg-panel);flex-direction:column;padding:24px 32px;gap:20px;border-bottom:1px solid var(--border);display:none;}
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block;}
+    .nav-cta{display:none;}
+  }
+
+  /* HERO */
+  .hero{padding-top:180px;padding-bottom:80px;}
+  .hero-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:center;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;} .hero{padding-top:140px;}}
+  .eyebrow{
+    display:inline-block;font-size:12px;letter-spacing:0.12em;color:var(--accent);
+    text-transform:uppercase;font-weight:600;margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(34px,5vw,58px);line-height:1.08;margin-bottom:20px;}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero .role{font-size:17px;color:var(--text-dim);margin-bottom:18px;}
+  .hero p.lede{font-size:16px;color:var(--text-dim);max-width:520px;margin-bottom:32px;}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px;}
+  .btn{padding:13px 26px;border-radius:100px;font-size:14px;font-weight:600;transition:all .2s;}
+  .btn-primary{background:var(--accent);color:#08110e;}
+  .btn-primary:hover{background:#95ddcd;}
+  .btn-secondary{border:1px solid var(--border);color:var(--text);}
+  .btn-secondary:hover{border-color:var(--text-dim);}
+  .chip-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .chip{border:1px solid var(--border);color:var(--text-dim);font-size:12px;padding:6px 14px;border-radius:100px;}
+  .hero-photo{position:relative;}
+  .hero-photo img{width:100%;max-width:420px;display:block;margin:0 auto;filter:grayscale(100%) contrast(1.05);}
+  .hero-photo::before{
+    content:'';position:absolute;inset:-20px;
+    background:radial-gradient(circle at 50% 30%, rgba(125,211,192,0.12), transparent 60%);
+    z-index:-1;
+  }
+
+  /* ROLES STRIP */
+  .roles-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0;}
+  .roles-label{font-size:11px;letter-spacing:0.12em;color:var(--text-faint);text-transform:uppercase;margin-bottom:16px;text-align:center;}
+  .roles-list{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;color:var(--text-dim);font-size:14px;}
+  .roles-list b{color:var(--text);font-weight:600;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:36px;}}
+  .section-label{font-size:12px;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;font-weight:600;margin-bottom:16px;}
+  .about h2{font-size:32px;margin-bottom:20px;}
+  .about p{color:var(--text-dim);margin-bottom:16px;font-size:15px;}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .stat-card{background:var(--bg-panel);border:1px solid var(--border);border-radius:14px;padding:24px;}
+  .stat-num{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:var(--accent);}
+  .stat-label{font-size:13px;color:var(--text-dim);margin-top:6px;}
+  .cred-list{margin-top:28px;display:flex;flex-direction:column;gap:14px;}
+  .cred-item{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text-dim);}
+  .cred-item .ico{font-size:16px;}
+
+  /* SERVICES */
+  .services-head{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .services-head h2{font-size:34px;}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:900px){.services-grid{grid-template-columns:1fr;}}
+  .service-card{background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;padding:32px;transition:border-color .2s;}
+  .service-card:hover{border-color:var(--accent);}
+  .service-num{font-family:'Space Grotesk',sans-serif;color:var(--text-faint);font-size:14px;margin-bottom:16px;}
+  .service-card h3{font-size:19px;margin-bottom:12px;}
+  .service-card p{color:var(--text-dim);font-size:14px;margin-bottom:18px;}
+  .service-card .note{font-size:12px;color:var(--text-faint);font-style:italic;margin-bottom:14px;}
+  .tools-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .tools-tags span{font-size:11px;color:var(--text-dim);border:1px solid var(--border);padding:4px 10px;border-radius:100px;}
+
+  /* VIDEO GRID */
+  .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:900px){.video-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.video-grid{grid-template-columns:1fr;}}
+  .video-card{background:var(--bg-panel);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+  .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;}
+  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .video-link-out{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;}
+  .video-caption{padding:14px 16px;display:flex;flex-direction:column;gap:2px;}
+  .video-caption b{font-size:14px;}
+  .video-caption span{font-size:12px;color:var(--text-faint);}
+  .video-card.featured{grid-column:span 2;border-color:var(--accent);position:relative;}
+  @media(max-width:900px){.video-card.featured{grid-column:span 1;}}
+  .featured-badge{position:absolute;top:12px;left:12px;z-index:2;background:var(--accent);color:#08110e;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;}
+
+  /* RESULTS */
+  .results-list{display:flex;flex-direction:column;gap:20px;}
+  .result-card{background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;padding:32px;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:start;}
+  @media(max-width:700px){.result-card{grid-template-columns:1fr;gap:12px;}}
+  .result-num{font-family:'Space Grotesk',sans-serif;font-size:24px;color:var(--accent);font-weight:700;}
+  .result-card h3{font-size:19px;margin-bottom:8px;}
+  .result-meta{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--text-faint);margin-bottom:12px;}
+  .result-meta b{color:var(--text-dim);}
+  .result-card p{color:var(--text-dim);font-size:14px;}
+
+  /* TIMELINE */
+  .timeline{border-left:1px solid var(--border);margin-left:8px;padding-left:32px;display:flex;flex-direction:column;gap:36px;}
+  .tl-item{position:relative;}
+  .tl-item::before{content:'';position:absolute;left:-38px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--accent);}
+  .tl-item h4{font-size:16px;margin-bottom:4px;}
+  .tl-item .co{color:var(--text-dim);font-size:14px;margin-bottom:2px;}
+  .tl-item .dt{color:var(--text-faint);font-size:12px;}
+
+  /* TOOLS MARQUEE */
+  .tools-section h2{font-size:32px;margin-bottom:36px;text-align:center;}
+  .tools-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:48px;}
+  @media(max-width:860px){.tools-cols{grid-template-columns:1fr 1fr;}}
+  .tools-col h4{font-size:13px;color:var(--accent);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.08em;}
+  .tools-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .tools-col li{color:var(--text-dim);font-size:14px;}
+
+  /* TESTIMONIAL */
+  .testimonials-head{text-align:center;max-width:640px;margin:64px auto 36px;}
+  .testimonials-head h2{font-size:30px;}
+  .testimonial-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:stretch;}
+  @media(max-width:900px){.testimonial-grid{grid-template-columns:1fr;}}
+  .testimonial{background:var(--bg-panel);border:1px solid var(--border);border-radius:18px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;}
+  .testimonial p{font-size:15px;color:var(--text);font-weight:400;line-height:1.55;margin-bottom:20px;}
+  .testimonial .who{display:flex;flex-direction:column;gap:2px;}
+  .testimonial .who b{font-size:14px;}
+  .testimonial .who span{color:var(--text-faint);font-size:12px;}
+  .testimonial .badge{display:inline-block;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--border);border-radius:100px;padding:3px 10px;margin-top:8px;width:fit-content;}
+
+  /* CTA */
+  .cta-section{background:var(--bg-panel-2);border-radius:24px;padding:64px;margin:0 32px;max-width:calc(var(--max) - 64px);margin-left:auto;margin-right:auto;}
+  @media(max-width:700px){.cta-section{padding:36px 24px;margin:0 16px;}}
+  .cta-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;}
+  @media(max-width:860px){.cta-grid{grid-template-columns:1fr;}}
+  .cta-section h2{font-size:32px;margin-bottom:16px;}
+  .cta-section p{color:var(--text-dim);font-size:15px;margin-bottom:24px;max-width:460px;}
+  .open-list{display:flex;flex-direction:column;gap:10px;}
+  .open-list div{font-size:14px;color:var(--text-dim);display:flex;gap:10px;}
+  .open-list b{color:var(--accent);}
+  .contact-block{display:flex;flex-direction:column;gap:16px;}
+  .contact-row{display:flex;flex-direction:column;gap:2px;border-bottom:1px solid var(--border);padding-bottom:14px;}
+  .contact-row .lbl{font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;}
+  .contact-row a{font-size:15px;color:var(--text);}
+  .contact-row a:hover{color:var(--accent);}
+
+  footer{padding:40px 0;text-align:center;color:var(--text-faint);font-size:13px;border-top:1px solid var(--border);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Moruf<span>.</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#tools">Tools</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Let's Connect</a>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</nav>
+
+<section id="home" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Digital Operations · AI-Assisted Content · Global Mobility</div>
+      <h1>I Run the Operations<br>That Keep Growing<br>Businesses From <em>Breaking.</em></h1>
+      <div class="role">Digital Operations Strategist · Remote Project Manager · Founder, NexRoute Express Ltd</div>
+      <p class="lede">I work across operations, CRM, and content — coordinating teams, tightening workflows, and using AI tools to produce marketing content faster than a traditional team can. I founded NexRoute Express to solve a global mobility problem I saw firsthand, and I'm building toward doing this at a bigger scale, for bigger organisations.</p>
+      <div class="btn-row">
+        <a href="#work" class="btn btn-primary">See My Work</a>
+        <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+      </div>
+      <div class="chip-row">
+        <span class="chip">Operations Coordinator</span>
+        <span class="chip">AI Content Producer</span>
+        <span class="chip">Founder</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://framerusercontent.com/images/Z2nVQZM1D5IMA4mwpTfVcl5CKg.png" alt="Adebayo Moruf Damilare">
+    </div>
+  </div>
+</section>
+
+<div class="roles-strip">
+  <div class="wrap">
+    <div class="roles-label">Current Roles</div>
+    <div class="roles-list">
+      <div><b>Founder & CEO</b> — NexRoute Express Ltd</div>
+      <div><b>Remote PM</b> — Titrans Technology</div>
+      <div><b>Marketing & Comms Coordinator</b> — Kryptonite Outsourcing</div>
+    </div>
+  </div>
+</div>
+
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-label">About</div>
+      <h2>Operations-first.<br>AI-native. Built on<br>real experience.</h2>
+      <p>Most businesses hit a ceiling not because they lack ambition, but because their internal systems can't keep up with their growth. I've spent the last 7+ years on the inside of that problem — running operations, managing distributed teams, and building the workflows that keep things moving.</p>
+      <p>I'm Moruf. I run NexRoute Express Ltd, a global mobility platform I founded to make travel and relocation logistics simpler for the people navigating them. I co-founded Velaro Wears, a fashion e-commerce brand. And I work as a Remote Project Manager at Titrans Technology, leading marketing, lead generation, and operational projects across distributed teams.</p>
+      <p>I'm now sharpening my focus on AI-assisted content production and digital operations — and looking for roles and partnerships, including in the UK, where I can apply that experience at greater scale.</p>
+      <div class="cred-list">
+        <div class="cred-item"><span class="ico">🎓</span> HubSpot Certified: Email Marketing & Social Media Marketing</div>
+        <div class="cred-item"><span class="ico">🎓</span> IBM SkillsBuild: Project Management Fundamentals</div>
+        <div class="cred-item"><span class="ico">🎓</span> ALX Africa: Certified Virtual Assistant</div>
+        <div class="cred-item"><span class="ico">📖</span> Published Author: "When You Become Someone's Father"</div>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">7+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Digital Ventures Founded</div></div>
+      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Roles Across Ops, Marketing & Leadership</div></div>
+      <div class="stat-card"><div class="stat-num">NG / UAE</div><div class="stat-label">Experience Across Both Markets</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="services-head">
+      <div class="section-label" style="text-align:center;">What I Do</div>
+      <h2>Three Ways I Help Businesses Run Better</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3>Operations & Workflow Support</h3>
+        <p>I help set up and run the operational backbone of a growing team: CRM configuration, onboarding flows, project tracking, and the day-to-day coordination that keeps distributed work from falling apart.</p>
+        <div class="tools-tags"><span>GoHighLevel</span><span>HubSpot</span><span>Asana</span><span>ClickUp</span><span>Trello</span><span>Google Workspace</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3>AI-Assisted Content & Video</h3>
+        <p>I'm platform-agnostic — I move across whichever AI video, image, and voice tools fit the brief, from Higgsfield and Luma to Kling, Seedance, Flow AI, and Happy Horse, to produce marketing content faster and cheaper than traditional production.</p>
+        <div class="note"><a href="#work" style="color:var(--accent);">See selected video work ↓</a></div>
+        <div class="tools-tags"><span>Higgsfield AI</span><span>Luma AI</span><span>Kling</span><span>Seedance</span><span>Flow AI</span><span>Happy Horse</span><span>ChatGPT</span><span>Claude</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3>Remote Project Leadership</h3>
+        <p>I coordinate distributed teams across time zones — managing timelines, aligning stakeholders, and keeping projects moving from brief to delivery.</p>
+        <div class="tools-tags"><span>Asana</span><span>ClickUp</span><span>Slack</span><span>Trello</span><span>Zoom</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="services-head">
+      <div class="section-label" style="text-align:center;">AI Video Production</div>
+      <h2>Selected Work</h2>
+      <p style="color:var(--text-dim);font-size:14px;margin-top:14px;">Self-initiated spec commercials — concept films built for existing brands to demonstrate AI video production skill. Not commissioned client work.</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card featured">
+        <span class="featured-badge">Featured</span>
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1hbinNdA-L71z9GTloQuFg3akpWy-rmGQ/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>GDK</b><span>Signature Cinematic Commercial — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1vGmJk6WsKnLWmHAY73fv6W4xg5nLOTuH/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Noya Fine Jewelry</b><span>Brand Film — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1pirjTZjwhef8MeWvYc-igpNJq2W8OlEe/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>P.F. Chang's</b><span>Concept Ad — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/14oqlyF7rRKNW0DI1sRNvFxhGnqECbLjj/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>SOSL Mobile Case</b><span>Product Ad — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1Mbi20Oe72ja-GjLz1blRrpK0aUb5uw34/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Blue Band</b><span>Product Commercial — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1eVaIElgkCh-2Fqax_lSKj_ojWMQmYs1k/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Arsenal Freekick</b><span>Sports Content</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1mYZTeMWDWs_XcTYz56x9aNuBMjgji3JV/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Aquafina</b><span>CGI Product Commercial — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1TdV-KLjJ5K6OugasX5EFhMVFNUPjEZTW/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>CeraVe</b><span>Face Cream Ad — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1fu-i-8Mwvi7foQecjneZ9bFDgUIwIO5d/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Cookies Ad</b><span>Product Ad — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1lRmk6X4K9EL5wmPRhUfYXsm8dayf_KDh/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Happiness — Lipstick</b><span>Beauty Campaign — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1KjjKComYl23U7h7PWuk8ZsevJQ08GbKk/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Happiness — Luxury Car</b><span>Brand Campaign — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1br9iKwm-Vzqh3XHUP2qA_t3ftmi4vaJl/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Happiness — Perfume</b><span>Beauty Campaign — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1OAsYYlYHugP6GOnmXv6CL2Cw5X1oCnho/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Huawei Note 50 Pro</b><span>Tech Commercial — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1oJjGNgu24aqlgnIMcLR2lAEMC-BRoyOR/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Lipstick Ad</b><span>Beauty Commercial — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1U72z9VxaurSRLAHPcZCb1CRqbQypoGRd/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Noya Foundation</b><span>Beauty Ad — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1AcTMRnnfu83LOTAUxmwsTEIwposeyHOo/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Serum Ad</b><span>Beauty Commercial — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1cKHKqn_TJoz9_ofCo3IaTSqtp4Hgc29z/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>SmartIX Powerbank</b><span>Product Ad — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1eu3kbYz28uyYg7DWId8dMribvVmsF1cs/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>SmartIX UltraGuard</b><span>Product Ad — Spec</span></div>
+      </div>
+      <div class="video-card">
+        <a href="https://x.com/MorufDamilare/status/2080603131595866261" target="_blank" class="video-frame video-link-out">
+          <span>▶ Watch on X</span>
+        </a>
+        <div class="video-caption"><b>More on X</b><span>@MorufDamilare</span></div>
+      </div>
+    </div>
+
+    <div class="services-head" style="margin-top:64px;">
+      <div class="section-label" style="text-align:center;">Personal & Company</div>
+      <h2>Story-Driven & NexRoute Content</h2>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1RzgKx7aTBZjBX-x5L50ipOW6zu6qbcx4/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>"When You Become Someone's Father"</b><span>Book Trailer — Version 1</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1dqIf1HRhJK6u0bb3p7bJA7BBUsbHOW2-/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>"When You Become Someone's Father"</b><span>Book Trailer — 9:16 Social Cut</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1BueQnDCYlS_LHIb_a_NnmDoFAnhoolBB/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>"When You Become Someone's Father"</b><span>Book Trailer — Version 2</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1P8g9dYFksGSFiakiXtrgV1cS9Ht8f5W8/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>"When You Become Someone's Father"</b><span>Book Trailer — Version 3</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1WaX4zdszS7cEj8VOEsy0ukzpHX5nvTpM/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>NexRoute Podcast</b><span>Season 1</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1VMcA3jd-HiLQsxQ26Oyg9I2MG_KmTV-N/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>NexRoute Podcast</b><span>Season 2</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/13tiSpT7CpvORX5dkjuUy51TXOgAuE6Vo/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Podcast</b><span>Episode 1</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1Wp-8sq-cUGBrR6zv443rwWq4A5hrOZ14/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>NOYATALK</b><span>Podcast</span></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/1wiN9lndH9CvveICK37Uf9AvKCt73Vzhw/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Podcast</b><span>Episode 2</span></div>
+      </div>
+    </div>
+
+    <div class="services-head" style="margin-top:64px;">
+      <div class="section-label" style="text-align:center;">Documentary & Long-Form</div>
+      <h2>Faceless Channel Work</h2>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://drive.google.com/file/d/12buP8uUAGH99vngFEOJC2CYXJhGwum2t/preview" allow="autoplay" allowfullscreen></iframe></div>
+        <div class="video-caption"><b>Why Grandparents Never Had Diabetes</b><span>YouTube Documentary</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="track-record">
+  <div class="wrap">
+    <div class="services-head">
+      <div class="section-label" style="text-align:center;">Track Record</div>
+      <h2>Real Roles, Real Responsibility</h2>
+    </div>
+    <div class="results-list">
+      <div class="result-card">
+        <div class="result-num">01</div>
+        <div>
+          <h3>Building NexRoute Express from the ground up</h3>
+          <div class="result-meta"><span><b>Company:</b> NexRoute Express Ltd</span><span><b>Role:</b> Founder & CEO</span><span><b>Timeline:</b> 2023 – Present</span></div>
+          <p>Founded and continue to run a digital-first global mobility platform — sourcing clients, managing operations, and handling logistics coordination end to end as a solo founder scaling the business.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">02</div>
+        <div>
+          <h3>Remote project delivery across marketing and operations</h3>
+          <div class="result-meta"><span><b>Company:</b> Titrans Technology</span><span><b>Role:</b> Remote Project Manager</span><span><b>Timeline:</b> Oct 2024 – Present</span></div>
+          <p>Manage cross-functional project delivery spanning email marketing, lead generation, content strategy, IT operations, and business consultancy for a distributed team.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">03</div>
+        <div>
+          <h3>Multi-client communication and CRM coordination</h3>
+          <div class="result-meta"><span><b>Company:</b> Kryptonite Outsourcing</span><span><b>Role:</b> Marketing & Communications Coordinator</span><span><b>Timeline:</b> Sep 2024 – Present</span></div>
+          <p>Run multi-client communication pipelines and CRM workflows, contributing to measurable improvements in client retention.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-label">Professional Timeline</div>
+    <h2 style="font-size:32px;margin-bottom:44px;">Where I've Worked</h2>
+    <div class="timeline">
+      <div class="tl-item"><h4>Founder & CEO</h4><div class="co">NexRoute Express Ltd</div><div class="dt">2023 – Present</div></div>
+      <div class="tl-item"><h4>Remote Project Manager</h4><div class="co">Titrans Technology</div><div class="dt">Oct 2024 – Present</div></div>
+      <div class="tl-item"><h4>Marketing & Communications Coordinator</h4><div class="co">Kryptonite Outsourcing</div><div class="dt">Sep 2024 – Present</div></div>
+      <div class="tl-item"><h4>Co-Founder & Creative Director</h4><div class="co">Velaro Wears</div><div class="dt">Ongoing</div></div>
+      <div class="tl-item"><h4>Sales & Customer Experience Specialist</h4><div class="co">Sharaf DG</div><div class="dt">Jan 2021 – Sep 2024</div></div>
+      <div class="tl-item"><h4>Admin & Client Relations Officer</h4><div class="co">Builders Craft</div><div class="dt">Jul 2018 – Dec 2020</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="tools" class="tools-section">
+  <div class="wrap">
+    <div class="section-label" style="text-align:center;">Stack</div>
+    <h2>The Tools I Work With</h2>
+    <div class="tools-cols">
+      <div class="tools-col">
+        <h4>Operations & PM</h4>
+        <ul><li>Asana</li><li>ClickUp</li><li>Trello</li><li>Slack</li><li>Google Workspace</li><li>Microsoft Office</li></ul>
+      </div>
+      <div class="tools-col">
+        <h4>CRM & Marketing Automation</h4>
+        <ul><li>GoHighLevel</li><li>HubSpot</li><li>Mailchimp</li><li>Email Automation</li></ul>
+      </div>
+      <div class="tools-col">
+        <h4>AI & Content Creation</h4>
+        <ul><li>Higgsfield AI</li><li>Luma AI</li><li>Kling</li><li>Seedance</li><li>Flow AI</li><li>Happy Horse</li><li>ChatGPT</li><li>Claude</li><li>Canva</li></ul>
+      </div>
+      <div class="tools-col">
+        <h4>Communication</h4>
+        <ul><li>Zoom</li><li>Google Meet</li><li>Notion</li></ul>
+      </div>
+    </div>
+
+    <div class="testimonials-head">
+      <div class="section-label" style="text-align:center;">What People Say</div>
+      <h2>Feedback From People I've Worked With</h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <p>"Working with Moruf Damilare Adebayo at Titrans Technology was a real privilege. From the very start, he brought energy, clarity, and focus to every task he took on. Moruf handled a wide range of responsibilities, from email marketing and lead generation to sales strategy and content development. He knew how to speak to our audience, craft messages that converted, and turn strategy into action. Nothing was done halfway; he consistently followed through with quality work. He also played a valuable role in our IT operations, helped drive our training and mentorship programs, and supported business consultancy projects with sharp insights and a thoughtful approach. His ability to connect with people and break down complex ideas made him a natural mentor and communicator. What I appreciated most was his reliability. You could always count on Moruf to take initiative, stay ahead of deadlines, and bring ideas to the table. Any team would benefit from having someone with his mix of creativity, discipline, and hands-on experience."</p>
+        <div class="who"><b>Brian Bassey</b><span>Data Analyst / ML Engineer — managed Moruf directly at Titrans Technology</span><span class="badge">LinkedIn Recommendation</span></div>
+      </div>
+      <div class="testimonial">
+        <p>"I had the pleasure of working with Adebayo at Kryptonite Outsourcing, where he excelled as an email marketer. His skill in crafting engaging campaigns consistently boosted our open and click-through rates, and his strategic adjustments based on data insights drove results. Adebayo is proactive, collaborative, and a true asset to any team."</p>
+        <div class="who"><b>Chinyere Asiabaka</b><span>Executive Assistant — worked with Moruf at Kryptonite Outsourcing</span><span class="badge">LinkedIn Recommendation</span></div>
+      </div>
+      <div class="testimonial">
+        <p>"I had the privilege of working closely with Adebayo Moruf Damilare during his time at Kryptonite Outsourcing, where he served as a Digital Marketer specializing in email marketing. Adebayo consistently demonstrated exceptional expertise in crafting effective email campaigns, ensuring our messaging was both targeted and engaging. His strategic approach to audience segmentation, content personalization, and performance analysis elevated our email marketing efforts to new heights. Adebayo's creativity and analytical mindset translated into campaigns that not only resonated with our clients but also consistently delivered measurable results. Beyond his technical skills, Adebayo was a team player, always ready to share insights, mentor others, and collaborate across departments. Since his departure, finding someone with Adebayo's level of skill, dedication, and professionalism has been a challenge — a true testament to the impact he had on our organization."</p>
+        <div class="who"><b>Swiny Ayiera</b><span>Founder, Kryptonite Outsourcing — managed Moruf directly</span><span class="badge">LinkedIn Recommendation</span></div>
+      </div>
+      <div class="testimonial">
+        <p>"Moruf is the kind of operator who makes everything around him run better. At Titrans Technology, he brought structure, creativity, and genuine initiative across email marketing, lead generation, content strategy, IT operations, and business consultancy. What set him apart wasn't just his skill set — it was his ability to take complex, ambiguous problems and turn them into clear, executable plans."</p>
+        <div class="who"><b>Tim Okon</b><span>Founder, Titrans Technology</span></div>
+      </div>
+      <div class="testimonial">
+        <p>"I am pleased to recommend Adebayo Damilare, who was an invaluable team member and skilled email marketer during our time working together at Kryptonite Outsourcing Company. Adebayo consistently demonstrated a keen understanding of effective email strategies, contributing greatly to our team's goals. His expertise in crafting engaging campaigns, segmenting audiences, and analyzing performance metrics helped us reach a broader audience and increase our email engagement rates significantly. Beyond his technical skills, Adebayo was a fantastic collaborator who actively shared insights and offered support to everyone on the team."</p>
+        <div class="who"><b>Ashley Kerubo</b><span>Executive Virtual Assistant & Community Manager — worked with Moruf at Kryptonite Outsourcing</span><span class="badge">LinkedIn Recommendation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-section">
+      <div class="cta-grid">
+        <div>
+          <h2>Let's Talk</h2>
+          <p>I'm looking for remote operations, project management, and AI-content roles — and open to UK relocation as I build toward it. If you need someone who can bring order to a growing team's work, I'd like to talk.</p>
+          <div class="open-list">
+            <div><b>▸</b> Remote operations and project management roles</div>
+            <div><b>▸</b> AI-assisted content and marketing work</div>
+            <div><b>▸</b> Founder partnerships and digital venture collaboration</div>
+            <div><b>▸</b> UK-based opportunities — actively working toward relocation</div>
+          </div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-row"><span class="lbl">Email</span><a href="mailto:adebayomorufdamilare@gmail.com">adebayomorufdamilare@gmail.com</a></div>
+          <div class="contact-row"><span class="lbl">LinkedIn</span><a href="https://linkedin.com/in/moruf-damilare" target="_blank">linkedin.com/in/moruf-damilare</a></div>
+          <div class="contact-row"><span class="lbl">Phone</span><a href="tel:+2348167159853">+234 816 715 9853</a></div>
+          <div class="contact-row"><span class="lbl">Instagram</span><a href="https://instagram.com/damilaremoruf" target="_blank">@damilaremoruf</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Adebayo Moruf Damilare. All rights reserved.
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
