@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MatchCut — The Global AI Video Tool Directory</title>
+<meta name="description" content="Compare 15+ AI video generation tools from the US, China, and beyond. Get matched to the right tool for your shot, compare tools side by side, and build a shortlist. Built by Moruf, AI video producer.">
+<meta property="og:title" content="MatchCut — The Global AI Video Tool Directory">
+<meta property="og:description" content="Compare 15+ AI video generation tools from the US, China, and beyond. Free matcher, comparison, and directory.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="bg-noise"></div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#" class="logo" aria-label="MatchCut home">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="28" height="28" rx="8" stroke="#7dd3c0" stroke-width="1.5"/>
+        <path d="M8 21L14 9M16 21L22 9" stroke="#7dd3c0" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>MatchCut</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <button class="nav-link active" data-view="matcher">Find My Tool</button>
+      <button class="nav-link" data-view="directory">Directory</button>
+      <button class="nav-link" data-view="shortlist">
+        Shortlist <span class="pill-count" id="shortlistCount">0</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">15+ Tools · US · China · UK · Open-Source</div>
+    <h1>Which AI Video Tool Should You Actually Use?</h1>
+    <p>The AI video landscape moves monthly and spans continents. MatchCut pairs you with the right tool for your shot, lets you compare tools side by side, and tracks the ones worth revisiting.</p>
+    <div class="byline">Built by <a href="https://adebayomorufdamilare.github.io" target="_blank" rel="noopener">Moruf</a> — AI video producer working across these tools daily.</div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- MATCHER VIEW -->
+  <section id="view-matcher" class="view">
+    <div class="card">
+      <div class="step-label">Step 1</div>
+      <h2 class="step-title">What are you making?</h2>
+      <div class="option-grid" id="useCaseGrid">
+        <button class="opt" data-value="product"><span class="ico">📦</span>Product Ad / Commercial</button>
+        <button class="opt" data-value="cinematic"><span class="ico">🎬</span>Cinematic Brand Film</button>
+        <button class="opt" data-value="avatar"><span class="ico">🗣️</span>Talking-Head / AI Avatar</button>
+        <button class="opt" data-value="ugc"><span class="ico">⚡</span>Fast UGC / Social Clip</button>
+        <button class="opt" data-value="multilingual"><span class="ico">🌍</span>Multilingual / Dubbed</button>
+        <button class="opt" data-value="longform"><span class="ico">🎞️</span>Long-Form / Multi-Scene</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="step-label">Step 2</div>
+      <h2 class="step-title">What matters most to you?</h2>
+      <div class="option-grid" id="priorityGrid">
+        <button class="opt" data-value="quality"><span class="ico">✨</span>Visual Quality</button>
+        <button class="opt" data-value="speed"><span class="ico">⏱️</span>Speed</button>
+        <button class="opt" data-value="budget"><span class="ico">💰</span>Budget / Free</button>
+      </div>
+    </div>
+
+    <div id="result" class="card result-card">
+      <div class="result-header">
+        <span class="badge">Recommended</span>
+        <span class="origin-badge" id="toolOrigin"></span>
+      </div>
+      <div class="tool-name" id="toolName"></div>
+      <div class="tool-facts" id="toolFacts"></div>
+      <p class="tool-why" id="toolWhy"></p>
+
+      <div class="alt-box">
+        <div class="lbl">Also consider</div>
+        <b id="altName"></b>
+        <p id="altWhy"></p>
+      </div>
+
+      <div class="prompt-box">
+        <div class="lbl">Starter prompt</div>
+        <button class="copy-btn" id="copyBtn">Copy</button>
+        <textarea id="promptText" readonly></textarea>
+      </div>
+      <div class="note">Prompt syntax varies by tool — treat this as a structural starting point.</div>
+      <button class="reset-btn" id="resetBtn">↺ Start over</button>
+    </div>
+  </section>
+
+  <!-- DIRECTORY VIEW -->
+  <section id="view-directory" class="view hidden">
+    <div class="card">
+      <input type="text" class="search-input" id="searchBox" placeholder="Search by name or keyword...">
+      <div class="filter-group-label">Region</div>
+      <div class="filter-row" id="regionFilters"></div>
+      <div class="filter-group-label">Category</div>
+      <div class="filter-row" id="categoryFilters"></div>
+    </div>
+    <div class="tool-grid" id="toolGrid"></div>
+    <div class="no-results hidden" id="noResults">No tools match those filters — try clearing one.</div>
+  </section>
+
+  <!-- SHORTLIST VIEW -->
+  <section id="view-shortlist" class="view hidden">
+    <div class="card">
+      <h2 class="step-title">Your Shortlist</h2>
+      <p class="dim">Tools you've bookmarked, saved in this browser.</p>
+    </div>
+    <div class="tool-grid" id="shortlistGrid"></div>
+    <div class="no-results hidden" id="shortlistEmpty">Nothing saved yet — star a tool from the directory to add it here.</div>
+  </section>
+
+</main>
+
+<!-- COMPARE BAR -->
+<div class="compare-bar hidden" id="compareBar">
+  <div class="wrap compare-bar-inner">
+    <div class="compare-chips" id="compareChips"></div>
+    <button class="btn-primary" id="compareOpenBtn">Compare <span id="compareCount">0</span></button>
+  </div>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="modal-overlay hidden" id="compareModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Compare Tools</h3>
+      <button class="modal-close" id="compareClose">✕</button>
+    </div>
+    <div class="modal-body" id="compareTableWrap"></div>
+  </div>
+</div>
+
+<div class="toast hidden" id="toast"></div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    15 tools tracked across the US, China, and the UK — verified against public sources as of August 2026. This space moves fast; always double-check current pricing on the tool's own site before committing.<br>
+    Built by <a href="https://adebayomorufdamilare.github.io" target="_blank" rel="noopener">Adebayo Moruf Damilare</a> · <a href="mailto:adebayomorufdamilare@gmail.com">Get in touch</a>
+  </div>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
